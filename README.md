@@ -1,5 +1,7 @@
 # Rig Studio
 
+🔗 **Live Demo:** [https://rig-studio-blush.vercel.app/](https://rig-studio-blush.vercel.app/)
+
 A simple web app to help visualize and plan custom PC builds in 3D before spending money on parts.
 
 Instead of just looking at text lists on PCPartPicker, this lets you see a 3D model of the rig, swap parts, check if they physically fit inside the case, and preview how the lighting looks.
