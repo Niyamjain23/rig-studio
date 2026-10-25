@@ -27,7 +27,7 @@
   </script>
 
   <!-- Global Space Grotesk Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=4.2">
+  <link rel="stylesheet" href="css/style.css?v=4.3">
 
   <!-- Three.js Core & Controls -->
   <script src="vendor/three.min.js"></script>
@@ -128,6 +128,12 @@
 
       <!-- Right Actions: Liquid Glass About Button & Theme Switch -->
       <div class="flex items-center gap-3">
+        <!-- Fullscreen Toggle Button -->
+        <button id="btn-hero-fullscreen" class="liquid-acrylic-pill interactive-btn px-3 py-1.5 text-xs font-semibold text-[var(--text-primary)] flex items-center gap-1.5 cursor-pointer" title="Toggle Fullscreen">
+          <span class="text-xs">⛶</span>
+          <span class="hidden sm:inline text-[11px] font-mono">Fullscreen</span>
+        </button>
+
         <!-- Liquid Acrylic About Button Matching RIG STUDIO Style -->
         <button id="btn-open-about" class="liquid-acrylic-pill interactive-btn px-4 py-1.5 text-xs font-semibold tracking-wider text-[var(--text-primary)] flex items-center gap-1.5 cursor-pointer">
           <span>About</span>
@@ -149,7 +155,7 @@
         </h1>
       </div>
 
-      <p class="text-sm md:text-base text-[var(--text-secondary)] font-medium max-w-md mb-8 leading-relaxed">
+      <p class="hero-description text-sm md:text-base text-[var(--text-secondary)] font-medium max-w-md mb-8 leading-relaxed">
         Real hardware specifications. Real clearance geometry. Test physical assembly inside the panoramic glass chassis.
       </p>
 
@@ -216,6 +222,11 @@
 
         <!-- Top-Right Utilities Island -->
         <div class="flex items-center gap-2.5 pointer-events-auto">
+          <!-- Fullscreen Toggle Button -->
+          <button id="btn-studio-fullscreen" class="liquid-acrylic-pill px-3 py-2 text-xs font-semibold text-[var(--text-primary)] shadow-lg hover:shadow-xl transition-all cursor-pointer" title="Toggle Fullscreen">
+            ⛶
+          </button>
+
           <!-- Theme Toggle Switch -->
           <div id="studio-theme-toggle" class="theme-switch" title="Toggle Light / Dark Mode">
             <div class="theme-switch-thumb">☀️</div>
@@ -487,6 +498,6 @@
   </div>
 
   <!-- Boot Module Application -->
-  <script type="module" src="js/app.js?v=4.2"></script>
+  <script type="module" src="js/app.js?v=4.3"></script>
 </body>
 </html>

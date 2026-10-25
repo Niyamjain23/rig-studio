@@ -1,8 +1,8 @@
 /* AERO Application Controller (VIBGYOR Spectrum & Lian Li O11 Vision) */
 import { HARDWARE_DB } from "../data/hardware.js";
 import { runDiagnostics } from "./clearance.js";
-import { PCStudioScene } from "./scene.js?v=4.2";
-import { ParticleHeadline } from "./particle_text.js?v=4.2";
+import { PCStudioScene } from "./scene.js?v=4.3";
+import { ParticleHeadline } from "./particle_text.js?v=4.3";
 
 class AeroApp {
   constructor() {
@@ -62,6 +62,7 @@ class AeroApp {
     this.bindCheckoutControls();
     this.bindAboutModal();
     this.bindOrientationControl();
+    this.bindFullscreenControls();
 
     this.refreshAll();
   }
@@ -95,6 +96,11 @@ class AeroApp {
       e.stopPropagation();
       e.preventDefault();
       
+      // Auto-enter fullscreen on mobile landscape for maximum vertical immersion
+      if (window.innerHeight < 560 && !document.fullscreenElement && document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+
       // 1. Prepare studio workspace in layout
       studioWorkspace.style.display = "flex";
       void studioWorkspace.offsetWidth; // Force reflow to guarantee CSS transition triggers
@@ -907,6 +913,44 @@ class AeroApp {
     window.addEventListener("orientationchange", () => {
       setTimeout(checkOrientation, 150);
     });
+  }
+
+  /* ----------------------------------------------------
+     FULLSCREEN TOGGLE CONTROLS
+  ---------------------------------------------------- */
+  bindFullscreenControls() {
+    const toggleFullscreen = () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
+    };
+
+    const heroFs = document.getElementById("btn-hero-fullscreen");
+    const studioFs = document.getElementById("btn-studio-fullscreen");
+    if (heroFs) heroFs.addEventListener("click", toggleFullscreen);
+    if (studioFs) studioFs.addEventListener("click", toggleFullscreen);
+
+    const updateFsIcons = () => {
+      const isFs = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+      if (heroFs) {
+        const iconSpan = heroFs.querySelector("span:first-child");
+        if (iconSpan) iconSpan.textContent = isFs ? "✕" : "⛶";
+      }
+      if (studioFs) studioFs.textContent = isFs ? "✕" : "⛶";
+    };
+
+    document.addEventListener("fullscreenchange", updateFsIcons);
+    document.addEventListener("webkitfullscreenchange", updateFsIcons);
   }
 }
 

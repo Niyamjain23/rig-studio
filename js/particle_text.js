@@ -91,9 +91,19 @@ export class ParticleHeadline {
   }
 
   resize() {
-    const isMobile = window.innerWidth < 768;
-    this.width = isMobile ? 380 : 680;
-    this.height = isMobile ? 160 : 260;
+    const isLandscapeShort = window.innerHeight < 550;
+    const isPortraitMobile = window.innerWidth < 768;
+
+    if (isLandscapeShort) {
+      this.width = 340;
+      this.height = 105;
+    } else if (isPortraitMobile) {
+      this.width = 360;
+      this.height = 150;
+    } else {
+      this.width = 680;
+      this.height = 260;
+    }
 
     this.canvas.width = Math.round(this.width * this.dpr);
     this.canvas.height = Math.round(this.height * this.dpr);
@@ -109,9 +119,15 @@ export class ParticleHeadline {
     offCanvas.width = this.width;
     offCanvas.height = this.height;
 
-    const isMobile = window.innerWidth < 768;
-    // Noticeably bigger, commanding typography
-    const fontSize = isMobile ? 64 : 106;
+    const isLandscapeShort = window.innerHeight < 550;
+    const isPortraitMobile = window.innerWidth < 768;
+
+    let fontSize = 106;
+    if (isLandscapeShort) {
+      fontSize = 44;
+    } else if (isPortraitMobile) {
+      fontSize = 62;
+    }
     const lineHeight = fontSize * 0.92;
 
     offCtx.fillStyle = "#FFFFFF";
@@ -119,15 +135,15 @@ export class ParticleHeadline {
     offCtx.textBaseline = "top";
 
     // Draw the two headline lines
-    offCtx.fillText("BUILD", 0, 8);
-    offCtx.fillText("IN 3D.", 0, 8 + lineHeight);
+    offCtx.fillText("BUILD", 0, 4);
+    offCtx.fillText("IN 3D.", 0, 4 + lineHeight);
 
     const imgData = offCtx.getImageData(0, 0, this.width, this.height);
     const data = imgData.data;
 
     this.particles = [];
     // Spaced-out particle grid so dots are distinct and clearly separated
-    const step = isMobile ? 5.5 : 6.5;
+    const step = (isLandscapeShort || isPortraitMobile) ? 4.5 : 6.5;
 
     for (let y = 0; y < this.height; y += step) {
       for (let x = 0; x < this.width; x += step) {

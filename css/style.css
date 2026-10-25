@@ -719,35 +719,42 @@ body:not(.theme-dark) .btn-liquid-glass:hover {
 /* ====================================================
    COMPACT LANDSCAPE STYLES FOR MOBILE WIDESCREEN
 ==================================================== */
-@media screen and (max-height: 520px) and (orientation: landscape) {
+@media screen and (max-height: 560px) {
   #landing-hero {
-    padding: 12px 20px !important;
+    padding: 10px 18px !important;
   }
-  .hero-headline {
-    font-size: 2.8rem !important;
-    line-height: 0.92 !important;
+  #hero-copy-wrap {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    max-width: 380px !important;
   }
-  #landing-hero p {
-    margin-bottom: 10px !important;
-    font-size: 0.75rem !important;
+  .hero-headline-wrap {
+    margin-bottom: 4px !important;
+  }
+  .hero-description {
+    display: none !important; /* Hide long paragraph so button is 100% visible on short screens */
   }
   #btn-enter-studio {
-    padding: 8px 18px !important;
-    font-size: 10px !important;
+    padding: 9px 20px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+    margin-top: 4px !important;
+    box-shadow: 0 4px 20px rgba(255, 107, 0, 0.45) !important;
   }
   #studio-workspace {
-    padding: 8px 16px !important;
+    padding: 6px 12px !important;
   }
   #studio-component-slate {
-    top: 50px !important;
-    bottom: 8px !important;
-    width: 320px !important;
-    right: 12px !important;
-    border-radius: 20px !important;
+    top: 44px !important;
+    bottom: 6px !important;
+    width: 295px !important;
+    right: 8px !important;
+    border-radius: 18px !important;
   }
   #studio-vibgyor-bar-container {
-    bottom: 8px !important;
-    transform: scale(0.9);
+    bottom: 6px !important;
+    transform: scale(0.8);
+    transform-origin: bottom center;
   }
 }
 
