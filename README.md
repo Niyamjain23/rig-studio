@@ -1,62 +1,56 @@
-# RIG STUDIO // Interactive 3D PC Builder & Clearance Lab
+# Rig Studio
 
-High-performance visual PC builder with real-time 3D assembly, physical millimeter clearance collision detection, and authentic hardware engineering field notes.
+A simple web app to help visualize and plan custom PC builds in 3D before spending money on parts.
 
-Inspired by clean motorsport aesthetics (Lando Norris / LN4 style) with soft silver-white gradients and electric volt accents.
+Instead of just looking at text lists on PCPartPicker, this lets you see a 3D model of the rig, swap parts, check if they physically fit inside the case, and preview how the lighting looks.
 
-## Features
+---
 
-- **3D Interactive Rig Viewport:**
-  - Real-time PBR components: Motherboard, CPU, Dual-tower Air Cooler & AIO Liquid Cooler (tubes + radiator), GPU dynamically scaled to exact millimeters, RAM heatspreaders with lightbars, PSU basement, rotating fans, and chassis frame.
-  - Interactive Glass Side Panel toggle (view internals vs full tempered glass reflection).
-  - Dynamic Airflow Streamlines (blue cool intake particles vs orange hot exhaust particles).
-  - Exploded View Slider (mechanically separates components along mounting axes).
-  - Orbit, Pan, Zoom, and Auto-focus camera controls.
+## What It Actually Does
 
-- **Physical Clearance & Conflict Engine:**
-  - Millimeter-accurate checks for GPU length vs available chassis clearance.
-  - Radiator deduction logic: mounting a front 360mm/280mm AIO automatically subtracts radiator and fan thickness from maximum GPU clearance.
-  - Air cooler height vs chassis glass clearance.
-  - RAM heatspreader height vs dual-tower cooler overhang alerts.
-  - Motherboard form-factor vs chassis standoffs.
-  - CPU socket vs Motherboard socket mismatch prevention.
+- **3D Preview:** Rotate, zoom in, and inspect the PC build from any angle.
+- **Component Swapping:** Pick parts across 8 hardware categories:
+  - Chassis / Cases (Lian Li O11 Dynamic EVO, Fractal North, Corsair 4000D, etc.)
+  - Motherboards
+  - Processors (CPUs)
+  - Coolers (Air coolers and liquid AIOs)
+  - Graphics Cards (GPUs)
+  - Memory (RAM)
+  - Power Supplies (PSUs)
+  - Case Fans (with intake and exhaust flow direction controls)
+- **Fit & Clearance Checks:** Flags conflicts automatically:
+  - GPU length vs available case room.
+  - Front-mounted liquid radiator blocking long GPUs.
+  - CPU cooler height vs chassis glass panel clearance.
+  - CPU socket vs motherboard socket mismatches.
+- **Specs Inspector:** A dedicated specs button for each part to check dimensions, TDP, clock speeds, and ports without cluttering the cards.
+- **Power & Price Tracking:** Estimates total build cost and power consumption against your power supply wattage in real time.
+- **RGB Lighting Slider:** An interactive color spectrum bar to preview the setup with different lighting colors, plus a rainbow wave toggle.
+- **Mobile Orientation Lock:** Prompts mobile users to turn their device to landscape so the 3D viewport and part selector fit naturally on screen.
+- **Parts List Export:** Copies a clean Bill of Materials (BOM) summary to the clipboard.
 
-- **Aerodynamic Airflow Lab:**
-  - Real-time CFM balance (Intake CFM vs Exhaust CFM).
-  - Dynamic Pressure Gauge: Positive Pressure (Dust defense), Negative Pressure (Thermal exhaust dump), and Balanced Pressure.
-  - Interactive fan direction toggles (Intake ⇄ Exhaust for Front, Top, Rear, Bottom brackets).
+---
 
-- **Hardware Engineer's Field Notes:**
-  - Real-world gotchas: 12VHPWR 35mm cable bend clearance, AM5 first-boot memory training duration, Intel 13/14th Gen 0x129+ microcode baseline requirements, Arctic Liquid Freezer III 38mm radiator thickness warning, and heavy GPU anti-sag recommendations.
+## Tech Stack
 
-- **Telemetry & BOM Sharing:**
-  - Live price calculation and peak wattage power meter with transient spike headroom.
-  - 1-click clipboard Bill of Materials export.
+- **Frontend:** Vanilla HTML, CSS, JavaScript (ES modules)
+- **3D Engine:** Three.js + OrbitControls + GLTFLoader + Post-processing Bloom
+- **Styling:** Tailwind CSS + Custom frosted glass UI
+- **Assets:** 3D GLB models
 
 ---
 
 ## Running Locally
 
-### Option 1: Double-Click
-Double-click `start.bat` and open [http://localhost:3000](http://localhost:3000) in your browser.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Niyamjain23/rig-studio.git
+   cd rig-studio
+   ```
 
-### Option 2: Command Line (Python)
-```bash
-python -m http.server 3000
-```
-Then visit [http://localhost:3000](http://localhost:3000).
+2. Start any local static server:
+   ```bash
+   python -m http.server 3000
+   ```
 
----
-
-## 100% Offline & Clean ZIP Bundling
-
-- **No external dependencies required:** Core 3D engine libraries (`three.min.js`, `OrbitControls.js`) are bundled locally in `/vendor`.
-- **Lightweight footprint:** The entire project folder is under **1.5MB**!
-- To package: Select all files in this directory and zip them.
-
----
-
-## Deploying to Vercel
-
-1. Push this repository to GitHub or upload the folder directly via the [Vercel Dashboard](https://vercel.com/new).
-2. Because this is a pure static web app with standard `index.html` and `vercel.json`, Vercel deploys it instantly in under 15 seconds with zero build steps or serverless cold starts.
+3. Open `http://localhost:3000` in your browser.
