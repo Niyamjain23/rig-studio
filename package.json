@@ -1,0 +1,20 @@
+{
+  "name": "rig-studio-pc-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive 3D Visual PC Builder & Hardware Clearance Engine",
+  "type": "module",
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "pc-builder",
+    "threejs",
+    "hardware",
+    "clearance-engine",
+    "airflow-simulator"
+  ],
+  "author": "Rig Studio",
+  "license": "MIT"
+}

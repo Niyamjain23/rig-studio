@@ -1,0 +1,24 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencies & Build Artefacts
+node_modules/
+dist/
+build/
+.cache/
+
+# Development Scratch & Logs
+scratch/
+locate_geforce.py
+*.log
+*.tmp
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+
+# Editor & IDE Directories
+.vscode/
+.idea/
