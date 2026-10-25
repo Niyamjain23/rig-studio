@@ -1,6 +1,6 @@
 # RIG STUDIO // Interactive 3D PC Builder & Clearance Lab
 
-High-performance visual PC builder with real-time 3D assembly, aerodynamic airflow simulator, physical millimeter clearance collision detection, and authentic hardware engineering field notes.
+High-performance visual PC builder with real-time 3D assembly, physical millimeter clearance collision detection, and authentic hardware engineering field notes.
 
 Inspired by clean motorsport aesthetics (Lando Norris / LN4 style) with soft silver-white gradients and electric volt accents.
 
